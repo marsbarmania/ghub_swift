@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7AR-NA-cKs">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="CropImageSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Uy-Pu-a4c">
+                                <rect key="frame" x="16" y="530" width="48" height="30"/>
+                                <state key="normal" title="Library">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="g0Y-yQ-sSB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAX-Ko-jVI">
+                                <rect key="frame" x="270" y="530" width="34" height="30"/>
+                                <state key="normal" title="Crop">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tappedCropBtn:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cKn-nc-5rE"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EXb-9N-nfA">
+                                <rect key="frame" x="20" y="84" width="280" height="194.5"/>
+                                <color key="backgroundColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haW-dJ-dbt">
+                                <rect key="frame" x="80" y="124" width="160" height="116"/>
+                                <color key="backgroundColor" red="0.16470588743686676" green="0.63137257099151611" blue="0.59607845544815063" alpha="0.42999999999999999" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="4vO-9E-fuf"/>
+                                    <constraint firstAttribute="height" constant="116" id="o4w-kD-jDe"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E5h-9T-UQo">
+                                <rect key="frame" x="20" y="305" width="280" height="194.5"/>
+                                <color key="backgroundColor" red="0.99215692280000001" green="0.66666668650000005" blue="0.2941176593" alpha="1" colorSpace="deviceRGB"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="E5h-9T-UQo" firstAttribute="width" secondItem="EXb-9N-nfA" secondAttribute="width" id="8bl-Mk-3Bz"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="jAX-Ko-jVI" secondAttribute="bottom" constant="8" id="C8L-rk-YT2"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6Uy-Pu-a4c" secondAttribute="bottom" constant="8" id="CpE-BR-HLO"/>
+                            <constraint firstAttribute="trailing" secondItem="jAX-Ko-jVI" secondAttribute="trailing" constant="16" id="Ehh-xK-lLU"/>
+                            <constraint firstItem="E5h-9T-UQo" firstAttribute="height" secondItem="EXb-9N-nfA" secondAttribute="height" id="N7F-93-YEd"/>
+                            <constraint firstItem="EXb-9N-nfA" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="NhB-uD-UpQ"/>
+                            <constraint firstItem="EXb-9N-nfA" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="28:32" id="QgU-Nf-ZVM"/>
+                            <constraint firstItem="E5h-9T-UQo" firstAttribute="top" secondItem="EXb-9N-nfA" secondAttribute="bottom" constant="26.5" id="SWW-Wk-A4r"/>
+                            <constraint firstItem="EXb-9N-nfA" firstAttribute="centerX" secondItem="haW-dJ-dbt" secondAttribute="centerX" id="YRj-cL-lJ5"/>
+                            <constraint firstItem="E5h-9T-UQo" firstAttribute="leading" secondItem="EXb-9N-nfA" secondAttribute="leading" id="ayr-Xg-mAB"/>
+                            <constraint firstItem="EXb-9N-nfA" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" multiplier="180:528" id="iGJ-2k-FcC"/>
+                            <constraint firstAttribute="centerX" secondItem="EXb-9N-nfA" secondAttribute="centerX" id="ixN-fp-ma0"/>
+                            <constraint firstItem="6Uy-Pu-a4c" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="16" id="kED-GH-JRC"/>
+                            <constraint firstItem="EXb-9N-nfA" firstAttribute="centerY" secondItem="haW-dJ-dbt" secondAttribute="centerY" id="rCG-6E-ob9"/>
+                            <constraint firstItem="EXb-9N-nfA" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="zro-aS-XPW"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="NhB-uD-UpQ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="kKq-VZ-T9e"/>
+                    <connections>
+                        <outlet property="cropRegion" destination="haW-dJ-dbt" id="FKq-8K-xF4"/>
+                        <outlet property="croppedImageView" destination="E5h-9T-UQo" id="Dd1-bG-4mz"/>
+                        <outlet property="mainImageView" destination="EXb-9N-nfA" id="DRj-E3-zvr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="858" y="342"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UfG-U7-6B0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7AR-NA-cKs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ivH-1f-m7a">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="2bO-GZ-Qh5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PtP-9b-lGQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="447" y="431"/>
+        </scene>
+    </scenes>
+</document>
