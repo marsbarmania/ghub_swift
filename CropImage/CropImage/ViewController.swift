@@ -24,18 +24,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         // Dispose of any resources that can be recreated.
     }
     
-    // Sample Button
+    // Library Button
     @IBAction func addButton(sender: AnyObject) {
         
-        if let image = mainImageView.image {
-            mainImageView.image = nil
-        }
+        self.clearImageViewImage()
         
-        if let image = croppedImageView.image {
-            croppedImageView.image = nil
-        }
-        
-        //self.pickImageFromCamera()
         self.pickImageFromLibrary()
     }
     
@@ -103,6 +96,17 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     func isLandscape(image:UIImage)->Bool {
         
         return image.size.width >= image.size.height
+    }
+    
+    func clearImageViewImage() ->Void {
+        
+        if let image = mainImageView.image {
+            mainImageView.image = nil
+        }
+        
+        if let image = croppedImageView.image {
+            croppedImageView.image = nil
+        }
     }
     
     // MARK: - UIImagePickerController Delegate
