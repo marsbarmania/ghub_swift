@@ -31,6 +31,10 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             mainImageView.image = nil
         }
         
+        if let image = croppedImageView.image {
+            croppedImageView.image = nil
+        }
+        
         //self.pickImageFromCamera()
         self.pickImageFromLibrary()
     }
