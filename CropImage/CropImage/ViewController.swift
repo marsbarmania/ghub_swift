@@ -40,54 +40,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     func cropImage(origin:UIImage,rect:CGRect)-> UIImage {
         //println( __FUNCTION__ )
-        var scale:CGFloat
-        let mvf = mainImageView.frame
-        let clipRect:CGRect
-        
-        if isLandscape(origin) {
-            // 横長
-            scale = origin.size.width / mainImageView.frame.size.width
-            
-            clipRect = CGRectMake( (rect.origin.x - mvf.origin.x) * scale,
-                (rect.origin.y - mvf.origin.y ) * scale,
-                rect.size.width * scale,
-                rect.size.height * scale )
-        }else{
-            // 縦長
-            scale = origin.size.height / mainImageView.frame.size.height
-            // displaying size width
-            let rscale:CGFloat = mainImageView.frame.size.height / origin.size.height
-            let displaySizeWidth:CGFloat = origin.size.width * rscale
-            let displayPointX:CGFloat = (mvf.size.width - displaySizeWidth)/2
-            
-            var newRect:CGRect
-            
-            newRect = CGRectMake(displayPointX + mvf.origin.x,
-                rect.origin.y,
-                displaySizeWidth,
-                rect.size.height)
-            // --- Debuug ----
-            /*
-            var DynamicView=UIView(frame:newRect)
-            DynamicView.backgroundColor=UIColor.redColor()
-            DynamicView.alpha = 0.4
-            self.view.addSubview(DynamicView)
-            */
-            // --- END -----
-            
-            clipRect = CGRectMake( 0,
-                (origin.size.height - newRect.size.height*scale)/2,
-                newRect.size.width * scale,
-                newRect.size.height * scale)
-            //println("cliprect= \(clipRect)")
-            
-        }
-        
         // ソース画像からCGImageRefを取り出す
         let srcImage:CGImageRef = origin.CGImage
         
         // 指定された範囲を切り抜いたCGImageRefを生成しUIImageとする
-        let imageRef:CGImageRef = CGImageCreateWithImageInRect(srcImage, clipRect)
+        let imageRef:CGImageRef = CGImageCreateWithImageInRect(srcImage, self.createClipRegionWithImage(origin,baseRect:rect) )
         let resultImage:UIImage = UIImage(CGImage: imageRef)!
         
         return resultImage
@@ -107,6 +64,55 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         if let image = croppedImageView.image {
             croppedImageView.image = nil
         }
+    }
+    
+    // Custom Method
+    func createClipRegionWithImage(origin:UIImage,baseRect:CGRect) -> CGRect {
+        
+        var scale:CGFloat
+        let mvf = mainImageView.frame
+        let clipRect:CGRect
+        
+        if isLandscape(origin) {
+            // 横長
+            scale = origin.size.width / mainImageView.frame.size.width
+            
+            clipRect = CGRectMake( (baseRect.origin.x - mvf.origin.x) * scale,
+                (baseRect.origin.y - mvf.origin.y ) * scale,
+                baseRect.size.width * scale,
+                baseRect.size.height * scale )
+        }else{
+            // 縦長
+            scale = origin.size.height / mainImageView.frame.size.height
+            // displaying size width
+            let rscale:CGFloat = mainImageView.frame.size.height / origin.size.height
+            let displaySizeWidth:CGFloat = origin.size.width * rscale
+            let displayPointX:CGFloat = (mvf.size.width - displaySizeWidth)/2
+            
+            var newRect:CGRect
+            
+            newRect = CGRectMake(displayPointX + mvf.origin.x,
+                baseRect.origin.y,
+                displaySizeWidth,
+                baseRect.size.height)
+            // --- Debuug ----
+            /*
+            var DynamicView=UIView(frame:newRect)
+            DynamicView.backgroundColor=UIColor.redColor()
+            DynamicView.alpha = 0.4
+            self.view.addSubview(DynamicView)
+            */
+            // --- END -----
+            
+            clipRect = CGRectMake( 0,
+                (origin.size.height - newRect.size.height*scale)/2,
+                newRect.size.width * scale,
+                newRect.size.height * scale)
+            //println("cliprect= \(clipRect)")
+            
+        }
+        
+        return clipRect
     }
     
     // MARK: - UIImagePickerController Delegate
